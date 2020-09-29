@@ -6,6 +6,11 @@ import { GoalComponent } from './goal/goal.component';
 import { GoalDetailComponent } from './goal-detail/goal-detail.component';
 import { StrikethroughDirective } from './strikethrough.directive';
 import { DateCountPipe } from './date-count.pipe';
+import { GoalFormComponent } from './goal-form/goal-form.component';
+import { FormsModule } from '@angular/forms';
+import { GoalsComponent } from './goals/goals.component';
+import { HttpClientModule } from '@angular/common/http';
+import { SweetAlert2Module } from '../../node_modules/sweetalert2/sweetalert2'
 
 @NgModule({
   declarations: [
@@ -13,10 +18,15 @@ import { DateCountPipe } from './date-count.pipe';
     GoalComponent,
     GoalDetailComponent,
     StrikethroughDirective,
-    DateCountPipe
+    DateCountPipe,
+    GoalFormComponent,
+    GoalsComponent,
+    HttpClientModule,
+    SweetAlert2Module
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

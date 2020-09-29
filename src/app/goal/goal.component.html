@@ -1,13 +1,41 @@
-<div>
-    <h1>My Goals</h1>
-    <ul>
-        <div *ngFor="let goal of goals; let i = index">
-            <li appStrikethrough>{{goal.name}} (due on {{goal.completeDate|date|uppercase}})</li>
-            <button (click)="toggleDetails(i)">Toggle Details</button>
-            <app-goal-detail *ngIf="goal.showDescription" [goal]="goal" (isComplete)="completeGoal($event, i)">
-            </app-goal-detail>
-            
+<div class="container">
+    <h1 class="text-center">My Goals</h1>
+    <hr>
+
+    <div class="row">
+        <div class="col-md-6 text-break text-justify">
+            <app-goal-form (submittedGoal)="addNewGoal($event)"></app-goal-form>
         </div>
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-6 text-break" *ngFor="let goal of goals; let i = index">
+                    <div>
+                        <h5 id={{i}} appStrikethrough>
+                            {{goal.name}}<br><span class="font-weight-normal small">Due on
+                            {{ goal.completeDate | date }}</span>
+                        </h5>
+                        <button (click)="toggleDetails(i)" class="btn btn-primary">Toggle Details</button>
+                    </div>
+                    <div *ngIf="goal.showDescription">
+                        <app-goal-detail [goal]="goal" (isComplete)="deleteGoal($event, i)"></app-goal-detail>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <ul>
+
     </ul>
-    <p *ngIf="goals.length > 5">You have too many goals!</p>
+    <p *ngIf="goals.length > 5" class="text-center">You have too many goals!</p>
+    <div class="row">
+        <blockquote class="blockquote">
+            <p class="mb-0">{{quote.quote}}</p>
+            <footer class="blockquote-footer">
+                <cite>{{quote.author}}</cite>
+            </footer>
+        </blockquote>
+    </div>
 </div>
