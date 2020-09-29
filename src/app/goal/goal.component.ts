@@ -21,7 +21,7 @@ export class GoalComponent implements OnInit {
     this.alertService = alertService;
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.getGoals();
 
     this.http.get<Quote>("http://quotes.stormconsultancy.co.uk/random.json").subscribe(data=>{
@@ -30,6 +30,7 @@ export class GoalComponent implements OnInit {
 
     })
   }
+  
   getGoals(){
     this.goals = this.goalService.getGoals();
   }
